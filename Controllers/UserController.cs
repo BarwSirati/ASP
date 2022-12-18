@@ -1,5 +1,4 @@
 ﻿using Backend.Services.UserService;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
@@ -14,25 +13,25 @@ namespace Backend.Controllers
             _userService = userService;
         }
         [HttpGet]
-        public async Task<ActionResult<List<Users>>> GetUsers()
+        public async Task<ActionResult<List<GetUserDto>>> GetUsers()
         {
-            return Ok(_userService.GetUsers());
+            return Ok(await _userService.GetUsers());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUser(int id)
+        public async Task<ActionResult<GetUserDto>> GetUser(int id)
         {
             var result = _userService.GetUser(id);
             if (result is null)
                 return NotFound("User not found");
-            return Ok(result);
+            return Ok(await result);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Users>> AddUser([FromBody]Users user)
+        public async Task<ActionResult<ServiceResponse<GetUserDto>>> AddUser([FromBody]AddUserDto user)
         {
             var result = _userService.AddUser(user);
-            return Ok(result);
+            return Ok(await result);
         }
     }
 }

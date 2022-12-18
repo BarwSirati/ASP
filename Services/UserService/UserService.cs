@@ -1,7 +1,9 @@
-﻿namespace Backend.Services.UserService
+﻿global using AutoMapper;
+namespace Backend.Services.UserService
 {
     public class UserService : IUserService
     {
+        private readonly IMapper _mapper;
         private static List<Users> users = new List<Users> {
                 new Users{
                     Id=1,
@@ -13,23 +15,37 @@
                     Username="User",
                     Password="User"
                 }
-            };
+        };
 
-        public Users AddUser(Users user)
+        public UserService(IMapper mapper)
         {
-            users.Add(user);
-            return user;
+            _mapper = mapper;
         }
 
-        public Users GetUser(int id)
+
+        public async Task<ServiceResponse<List<GetUserDto>>> GetUsers()
         {
-            var user = users.Find(x => x.Id == id);
-            return user;
+            var serviceResponse = new ServiceResponse<List<GetUserDto>>();
+            serviceResponse.Data = users.Select(c => _mapper.Map<GetUserDto>(c)).ToList();
+            return serviceResponse;
         }
 
-        public List<Users> GetUsers()
+        public async Task<ServiceResponse<GetUserDto>> GetUser(int id)
         {
-            return users;
+            var serviceResponse = new ServiceResponse<GetUserDto>();
+            var user = users.FirstOrDefault(c => c.Id == id);
+            serviceResponse.Data = _mapper.Map<GetUserDto>(user);
+            return serviceResponse;
+        }
+
+        public async Task<ServiceResponse<GetUserDto>> AddUser(AddUserDto user)
+        {
+            var serviceResponse = new ServiceResponse<GetUserDto>();
+            var u = _mapper.Map<Users>(user);
+            u.Id = users.Max(c => c.Id) + 1;
+            users.Add(u);
+            serviceResponse.Data = _mapper.Map<GetUserDto>(u);
+            return serviceResponse;
         }
     }
 }
