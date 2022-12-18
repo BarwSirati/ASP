@@ -37,3 +37,9 @@ dotnet run
 ```bash
 dotnet dev-certs https --trust
 ```
+
+###### Install dotnet-ef
+
+```bash
+dotnet tool install --global dotnet-ef
+```
