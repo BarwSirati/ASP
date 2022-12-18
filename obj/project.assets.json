@@ -465,11 +465,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\barw1\\Desktop\\crud\\crud.csproj",
-      "projectName": "crud",
-      "projectPath": "c:\\Users\\barw1\\Desktop\\crud\\crud.csproj",
+      "projectUniqueName": "C:\\Users\\barw1\\Desktop\\Backend\\Backend\\Backend.csproj",
+      "projectName": "Backend",
+      "projectPath": "C:\\Users\\barw1\\Desktop\\Backend\\Backend\\Backend.csproj",
       "packagesPath": "C:\\Users\\barw1\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\barw1\\Desktop\\crud\\obj\\",
+      "outputPath": "C:\\Users\\barw1\\Desktop\\Backend\\Backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\barw1\\AppData\\Roaming\\NuGet\\NuGet.Config",
