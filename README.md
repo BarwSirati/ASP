@@ -43,3 +43,13 @@ dotnet dev-certs https --trust
 ```bash
 dotnet tool install --global dotnet-ef
 ```
+
+###### Add Migration
+```bash
+dotnet ef migrations add CreateInitial
+```
+
+###### Update Database
+```bash
+dotnet ef database update
+```
