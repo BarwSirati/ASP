@@ -46,9 +46,6 @@ namespace Backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Username")
-                        .IsUnique();
-
                     b.ToTable("User");
                 });
 #pragma warning restore 612, 618

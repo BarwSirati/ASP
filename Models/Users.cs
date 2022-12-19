@@ -1,7 +1,5 @@
 ﻿namespace Backend.Models
 {
-    [Index(nameof(Username), IsUnique = true)]
-
     public class Users
     {
         [Key]
